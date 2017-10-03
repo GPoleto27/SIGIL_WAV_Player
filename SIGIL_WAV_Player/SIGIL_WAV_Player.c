@@ -18,29 +18,25 @@ int main ()
     slSetTextAlign(SL_ALIGN_CENTER);
     slSetBackColor(0.0, 0.0, 0.0);
 
-    FILE *fileWAV, *Settings;
+    FILE *fileWAV;
     long long unsigned int fileSize = 0;
     unsigned int pArquivoWAV [20];
     register int i = 0, a = 0;
     short int soundTrigger = 0, pauseTrigger = 0, fileTrigger = 0, loopTrigger = 0;
     int qtdSlash = 0, size = 0, Bits = 0, ByteRate = 0, loadWAV = 0, tex = slLoadTexture("SWAV.png");
-    char filename[256]= {0}, *newLpstrFile = 0, v[4][10], vFinal[9], bits[2], bFinal[3], lang;
+    char filename[256]= {0}, *newLpstrFile = 0, v[4][10], vFinal[9], bits[2], bFinal[3];
     double fileLength = 0, fileElapsed = 0;
     long long unsigned int currentTime = 0, zeroTime = 0, zeroPausedTime = 0, pausedTime = 0, lastPausedTime = 0, timeElapsed = 0;
     OPENFILENAME    ofn;
     ZeroMemory(&ofn, sizeof(OPENFILENAME));
     ofn.lStructSize = sizeof(OPENFILENAME);
     ofn.hwndOwner = NULL;
-    ofn.lpstrFilter = "¡udio WAV (*.wav)\0*.wav\0\0";
+    ofn.lpstrFilter = "√Åudio WAV (*.wav)\0*.wav\0\0";
     ofn.lpstrFile = filename;
     ofn.nMaxFile = 256;
     ofn.lpstrTitle = "Selecione o arquivo";
     ofn.Flags = OFN_FILEMUSTEXIST;
 
-    Settings = fopen("settings.txt", "a");
-    lang = fgetc(Settings);
-    printf("%c\n", lang);
-    fclose(Settings);
     while(!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
     {
         slSetForeColor(1.0, 1.0, 1.0, 1.0);
@@ -198,7 +194,7 @@ int main ()
                     }
                 }
                 else
-                    MessageBox (NULL, "O arquivo n„o pÙde ser aberto.", "Falha", MB_OK);
+                    MessageBox (NULL, "O arquivo n√£o p√¥de ser aberto.", "Falha", MB_OK);
             }
         }
 
